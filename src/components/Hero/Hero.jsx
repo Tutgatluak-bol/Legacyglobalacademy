@@ -1,38 +1,51 @@
 import "./Hero.css";
-import dark_arrow from "../../assets/dark-arrow.png"
-import {TypeAnimation} from 'react-type-animation'
+import darkArrow from "../../assets/dark-arrow.png";
+import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   return (
-    <div className="hero container">
-      
+    <section className="hero container" id="hero">
       <div className="hero-text">
+        <p className="hero-eyebrow">LEGACY GLOBAL ACADEMY</p>
+
         <h1>
-        <TypeAnimation
-      sequence={[
-        // Same substring at the start will only be typed out once, initially
-        'Education is one thing no one can take away from you.',
-        2000, // wait 1s before replacing "Mice" with "Hamsters"
-        'Teachers can open the door, but you must enter it yourself.',
-        2000,
-       'A person who never made a mistake never tried anything new.',
-        2000
-      ]}
-      wrapper="span"
-      speed={60}
-      
-      repeat={Infinity}
-    />
-          
-</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-          aspernatur quidem sint expedita harum saepe error vel nesciunt dolor
-          ut? Fugiat delectus maiores illo alias esse debitis.
+          <TypeAnimation
+            sequence={[
+              "Where Dreams Take Flight.",
+              2500,
+              "Inspiring Minds. Shaping Futures.",
+              2500,
+              "Learning Today. Leading Tomorrow.",
+              2500,
+            ]}
+            wrapper="span"
+            speed={50}
+            cursor={true}
+            repeat={Infinity}
+          />
+        </h1>
+
+        <p className="hero-description">
+          Discover a learning community where knowledge, character, and
+          curiosity come together to help learners grow and prepare for
+          tomorrow.
         </p>
-        <button className="btn">Explore more <img src={dark_arrow} alt="" /></button>
+
+        <a href="#about" className="hero-button">
+          Discover Our School
+          <img src={darkArrow} alt="" aria-hidden="true" />
+        </a>
       </div>
-    </div>
+
+      <a
+        href="#program"
+        className="hero-scroll"
+        aria-label="Scroll to academics"
+      >
+        <span />
+        Scroll to explore
+      </a>
+    </section>
   );
 };
 

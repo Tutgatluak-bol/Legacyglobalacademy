@@ -1,37 +1,54 @@
-import "./About.css";
-import about_img from "../../assets/about.png";
-import play_icon from "../../assets/play-icon.png";
 
-const About = ({setPlayState}) => {
+import "./About.css";
+import aboutImg from "../../assets/about.png";
+import playIcon from "../../assets/play-icon.png";
+
+const About = ({ setPlayState }) => {
   return (
-    <div className="about">
+    <section className="about" aria-labelledby="about-heading">
       <div className="about-left">
-        <img src={about_img} alt="" className="about-img" />
-        <img src={play_icon} alt="" className="play-icon" onClick={()=> setPlayState(true)} />
+        <img
+          src={aboutImg}
+          alt="Learning environment at Legacy Global Academy"
+          className="about-img"
+          loading="lazy"
+        />
+
+        <button
+          type="button"
+          className="about-play-button"
+          onClick={() => setPlayState(true)}
+          aria-label="Play the Legacy Global Academy introduction video"
+        >
+          <img src={playIcon} alt="" className="play-icon" />
+        </button>
       </div>
+
       <div className="about-right">
-        <h3>ABOUT UNIVERSITY</h3>
-        <h2>Nurturing Tomorrow's Leaders Today</h2>
+        <span className="about-eyebrow">ABOUT OUR SCHOOL</span>
+
+        <h2 id="about-heading">
+          Nurturing potential.
+          <span> Inspiring the future.</span>
+        </h2>
+
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-          repudiandae, aliquam animi dolore expedita veritatis iste explicabo
-          quos odio similique laboriosam corrupti doloribus? Ipsum nobis, omnis
-          sequi expedita adipisci nemo! At tempore, incidunt omnis totam non
-          numquam iste error aliquam distinctio rem commodi officia sapiente
-          quasi accusamus rerum sit ab corporis sint facilis id optio culpa
-          soluta earum harum! Tempora?
+          At Legacy Global Academy, we believe education should encourage
+          curiosity, build knowledge, and support the growth of every
+          learner.
         </p>
+
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-          explicabo nisi magnam molestias magni earum consequatur qui expedita,
-          eos dolore reprehenderit accusantium, neque consequuntur harum
-          nostrum. Impedit, tenetur. Quam, nemo. Tenetur cupiditate numquam
-          cumque veritatis? Culpa voluptas accusantium, id in temporibus maiores
-          exercitationem quas sunt sit accusamus, molestias rerum incidunt.
-          Possimus officia veritatis velit labore aut fugit placeat a error.
+          Our vision is to create a learning environment where learners
+          can develop their abilities, strengthen their character, and
+          prepare for future opportunities.
         </p>
+
+        <a href="/about" className="about-learn-more">
+          Discover Our School <span aria-hidden="true">→</span>
+        </a>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,42 +1,101 @@
+
 import "./Navbar.css";
-import logo from '../../assets/logo.png'
 import { useEffect, useState } from "react";
-import {Link} from "react-scroll";
-import menu_icon from "../../assets/menu-icon.png"
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import menuIcon from "../../assets/menu-icon.png";
 
 const Navbar = () => {
-
   const [sticky, setSticky] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
-  useEffect(()=>{
-    window.addEventListener('scroll', () => {
-      window.scrollY > 500 ? setSticky(true) : setSticky(false)
-    })
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const closeOnResize = () => {
+      if (window.innerWidth > 886) {
+        setMobileMenu(false);
+      }
+    };
 
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const toggleMenu = () => {
-    mobileMenu? setMobileMenu(false) : setMobileMenu(true);
-  }
+    window.addEventListener("resize", closeOnResize);
+
+    return () => window.removeEventListener("resize", closeOnResize);
+  }, []);
+
+  const closeMenu = () => setMobileMenu(false);
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Academics", path: "/academics" },
+    { label: "News & Events", path: "/news" },
+    { label: "Staff", path: "/staff" },
+    { label: "Gallery", path: "/gallery" },
+    { label: "Contact", path: "/contact" },
+  ];
 
   return (
-    <nav className={`container ${sticky? 'dark-nav': ''}`}>
-        {/* <img src={logo} alt="" className="logo"/> */}
-        <h1>LOGO</h1>
-        <ul className={mobileMenu? '': 'hide-mobile-menu'}>
-            <li><Link to= 'hero' smooth = {true} offset={0} duration={500}>Home</Link></li>
-            <li><Link to= 'program' smooth = {true} offset={-260} duration={500}>Program</Link></li>
-            <li><Link to= 'about' smooth = {true} offset={-150} duration={500}>About us</Link></li>
-            <li><Link to= 'campus' smooth = {true} offset={-260} duration={500}>Campus</Link></li>
-            <li><Link to= 'testimonials' smooth = {true} offset={-260} duration={500}>Testimonials</Link></li>
-            <li><Link to="contact" smooth = {true} offset={-260} duration={500} className="btn">Contact us</Link></li>
-        </ul>
+    <nav className={`container navbar ${sticky ? "dark-nav" : ""}`}>
+      <Link
+        to="/"
+        className="navbar-brand"
+        onClick={closeMenu}
+        aria-label="Legacy Global Academy home"
+      >
+        <img
+          src={logo}
+          alt="Legacy Global Academy logo"
+          className="logo"
+        />
 
-      <img src={menu_icon} alt="" className="menu-icon" onClick={toggleMenu} />
+        <span className="brand-name">
+          <strong>LEGACY</strong>
+          <small>GLOBAL ACADEMY</small>
+        </span>
+      </Link>
 
+      <ul className={mobileMenu ? "mobile-menu-open" : "hide-mobile-menu"}>
+        {navItems.map((item) => (
+          <li key={item.path}>
+            <NavLink
+              to={item.path}
+              end={item.path === "/"}
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                `${isActive ? "active-link" : ""} ${
+                  item.path === "/contact" ? "nav-contact" : ""
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        type="button"
+        className="menu-toggle"
+        onClick={() => setMobileMenu((open) => !open)}
+        aria-label={
+          mobileMenu ? "Close navigation menu" : "Open navigation menu"
+        }
+        aria-expanded={mobileMenu}
+      >
+        <img src={menuIcon} alt="" className="menu-icon" />
+      </button>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
