@@ -1,9 +1,9 @@
 import "./Academics.css";
 
-import academicImage1 from "../../assets/program-1.png";
+import academicImage1 from "../../assets/program-1.jpg";
 // import academicImage2 from "../../assets/program-2.png";
 import academicImage4 from "../../assets/academicImage-4.png"
-import academicImage3 from "../../assets/program-3.png";
+import academicImage3 from "../../assets/program-2.jpg";
 
 const academicAreas = [
   {

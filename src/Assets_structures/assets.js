@@ -32,3 +32,5 @@ your-project/
 │   └── gallery-9.jpg
 ├── src/
 └── package.json
+
+LegacyGlobalAcademy

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./AcademicsPage.css";
 import academicAbout from "/academic-about.jpg";
 
-import learningImage from "../assets/program-1.png";
-import skillsImage from "../assets/program-2.png";
-import growthImage from "../assets/program-3.png";
-import aboutImage from "../assets/about.png";
+import learningImage from "../assets/program-1.jpg";
+import skillsImage from "../assets/program-2.jpg";
+import growthImage from "../assets/program-3.jpg";
+
 
 const learningAreas = [
   {
@@ -76,7 +76,7 @@ function AcademicsPage() {
       <section className="academics-intro section-container">
         <div className="academics-intro-image">
           <img
-            src={aboutImage}
+            src={`${import.meta.env.BASE_URL}academic-about.jpg`}
             alt="Learning environment at Legacy Global Academy"
             loading="lazy"
           />
