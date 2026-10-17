@@ -1,16 +1,14 @@
 
 import { Link } from "react-router-dom";
 import "./AcademicsPage.css";
-import academicAbout from "/academic-about.jpg";
 
 import learningImage from "../assets/program-1.jpg";
 import skillsImage from "../assets/program-2.jpg";
 import growthImage from "../assets/program-3.jpg";
 
-
 const learningAreas = [
   {
-    // number: "01",
+    id: 1,
     title: "Learning & Discovery",
     description:
       "Encouraging curiosity, active participation, and a strong foundation for lifelong learning.",
@@ -18,7 +16,7 @@ const learningAreas = [
     alt: "Learning and discovery",
   },
   {
-    // number: "02",
+    id: 2,
     title: "Knowledge & Skills",
     description:
       "Supporting learners as they develop knowledge, practical skills, and independent thinking.",
@@ -26,7 +24,7 @@ const learningAreas = [
     alt: "Developing knowledge and skills",
   },
   {
-    // number: "03",
+    id: 3,
     title: "Personal Growth",
     description:
       "Encouraging confidence, responsibility, creativity, and preparation for future opportunities.",
@@ -56,18 +54,27 @@ function AcademicsPage() {
           </p>
 
           <div className="academics-page-actions">
-            <a href="#learning-areas" className="academics-primary-button">
+            <a
+              href="#learning-areas"
+              className="academics-primary-button"
+            >
               Explore Learning
               <span aria-hidden="true">→</span>
             </a>
 
-            <Link to="/contact" className="academics-outline-button">
+            <Link
+              to="/contact"
+              className="academics-outline-button"
+            >
               Contact Our School
             </Link>
           </div>
         </div>
 
-        <div className="academics-hero-decoration" aria-hidden="true">
+        <div
+          className="academics-hero-decoration"
+          aria-hidden="true"
+        >
           <span className="academics-decoration-circle" />
           <span className="academics-decoration-line" />
         </div>
@@ -80,6 +87,7 @@ function AcademicsPage() {
             alt="Learning environment at Legacy Global Academy"
             loading="lazy"
           />
+
           <div className="academics-image-caption">
             <span className="academics-caption-dot" />
             <span>Where Dreams Take Flight</span>
@@ -138,7 +146,7 @@ function AcademicsPage() {
             {learningAreas.map((area) => (
               <article
                 className="academics-page-card"
-                key={area.number}
+                key={area.id}
               >
                 <div className="academics-page-card-image">
                   <img
@@ -146,9 +154,6 @@ function AcademicsPage() {
                     alt={area.alt}
                     loading="lazy"
                   />
-                  {/* <span className="academics-page-card-number">
-                    {area.number}
-                  </span> */}
                 </div>
 
                 <div className="academics-page-card-body">
@@ -184,7 +189,9 @@ function AcademicsPage() {
               <span>01</span>
               <div>
                 <h3>Curiosity</h3>
-                <p>Ask questions, explore ideas, and keep learning.</p>
+                <p>
+                  Ask questions, explore ideas, and keep learning.
+                </p>
               </div>
             </div>
 
@@ -192,7 +199,9 @@ function AcademicsPage() {
               <span>02</span>
               <div>
                 <h3>Character</h3>
-                <p>Develop responsibility, respect, and integrity.</p>
+                <p>
+                  Develop responsibility, respect, and integrity.
+                </p>
               </div>
             </div>
 
@@ -200,7 +209,9 @@ function AcademicsPage() {
               <span>03</span>
               <div>
                 <h3>Growth</h3>
-                <p>Build confidence and prepare for future opportunities.</p>
+                <p>
+                  Build confidence and prepare for future opportunities.
+                </p>
               </div>
             </div>
           </div>

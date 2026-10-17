@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NewsPage.css";
@@ -43,25 +44,27 @@ const newsArticles = [
 ];
 
 const categories = [
-  "All News",
-  "School News",
-  "Academics",
-  "Student Life",
-  "Announcements",
+  { id: 1, name: "All News" },
+  { id: 2, name: "School News" },
+  { id: 3, name: "Academics" },
+  { id: 4, name: "Student Life" },
+  { id: 5, name: "Announcements" },
 ];
 
 function NewsPage() {
   const [activeCategory, setActiveCategory] = useState("All News");
 
-  const filteredArticles = activeCategory === "All News"? newsArticles: newsArticles.filter(
+  const filteredArticles =
+    activeCategory === "All News"
+      ? newsArticles
+      : newsArticles.filter(
           (article) => article.category === activeCategory
         );
 
   return (
     <main className="news-page">
-      {/* Hero Section */}
       <section className="news-hero">
-        <div className="news-hero-overlay"></div>
+        <div className="news-hero-overlay" />
 
         <div className="news-hero-content">
           <span className="news-eyebrow">
@@ -94,7 +97,6 @@ function NewsPage() {
         </div>
       </section>
 
-      {/* News Introduction */}
       <section className="news-intro">
         <div className="news-container news-intro-inner">
           <div>
@@ -114,7 +116,6 @@ function NewsPage() {
         </div>
       </section>
 
-      {/* News Articles */}
       <section className="news-listing" id="latest-news">
         <div className="news-container">
           <div className="news-listing-heading">
@@ -122,6 +123,7 @@ function NewsPage() {
               <span className="news-section-label">
                 THE LATEST
               </span>
+
               <h2>Latest News & Events</h2>
             </div>
 
@@ -131,24 +133,25 @@ function NewsPage() {
             </span>
           </div>
 
-          {/* Category Filters */}
-          <div className="news-filters" aria-label="Filter news by category">
+          <div
+            className="news-filters"
+            aria-label="Filter news by category"
+          >
             {categories.map((category) => (
               <button
-                key={category}
+                key={category.id}
                 type="button"
                 className={`news-filter-btn ${
-                  activeCategory === category ? "active" : ""
+                  activeCategory === category.name ? "active" : ""
                 }`}
-                onClick={() => setActiveCategory(category)}
-                aria-pressed={activeCategory === category}
+                onClick={() => setActiveCategory(category.name)}
+                aria-pressed={activeCategory === category.name}
               >
-                {category}
+                {category.name}
               </button>
             ))}
           </div>
 
-          {/* Featured Article */}
           {activeCategory === "All News" && (
             <article className="news-featured-card">
               <div className="news-featured-image">
@@ -157,6 +160,7 @@ function NewsPage() {
                   alt="Students learning in a school environment"
                   loading="lazy"
                 />
+
                 <span className="news-featured-badge">
                   Featured Story
                 </span>
@@ -185,7 +189,6 @@ function NewsPage() {
             </article>
           )}
 
-          {/* Article Grid */}
           <div className="news-grid">
             {filteredArticles
               .filter(
@@ -244,7 +247,6 @@ function NewsPage() {
         </div>
       </section>
 
-      {/* Community CTA */}
       <section className="news-community">
         <div className="news-container news-community-inner">
           <div>
