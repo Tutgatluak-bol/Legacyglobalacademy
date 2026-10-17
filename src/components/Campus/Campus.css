@@ -11,6 +11,7 @@
 }
 .gallery img {
     width: 23%;
+    height: 23%;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
