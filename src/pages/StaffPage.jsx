@@ -8,7 +8,7 @@ const staffMembers = [
     name: "School Leadership",
     role: "School Administration",
     department: "Leadership",
-    image: "/staff-1.jpg",
+    image: "/staff-1.png",
     initials: "SL",
     description:
       "Providing leadership, guidance, and direction for the school's educational mission.",

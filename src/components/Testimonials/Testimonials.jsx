@@ -1,12 +1,13 @@
 
+import { useRef, useState } from "react";
 import "./Testimonials.css";
+
 import next_icon from "../../assets/next-icon.png";
 import back_icon from "../../assets/back-icon.png";
 import user_1 from "../../assets/user-1.png";
 import user_2 from "../../assets/user-2.png";
 import user_3 from "../../assets/user-3.png";
 import user_4 from "../../assets/user-4.png";
-import { useRef } from "react";
 
 const testimonials = [
   {
@@ -49,27 +50,28 @@ const testimonials = [
 
 const Testimonials = () => {
   const slider = useRef(null);
-  const currentSlide = useRef(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const updateSlider = (index) => {
+    const lastSlide = testimonials.length - 1;
+    const nextIndex = Math.max(0, Math.min(index, lastSlide));
+
+    setCurrentSlide(nextIndex);
+
+    if (slider.current) {
+      slider.current.style.transform = `translateX(-${nextIndex * 25}%)`;
+    }
+  };
 
   const slideForward = () => {
-    if (currentSlide.current < testimonials.length - 1) {
-      currentSlide.current += 1;
-      updateSlider();
+    if (currentSlide < testimonials.length - 1) {
+      updateSlider(currentSlide + 1);
     }
   };
 
   const slideBackward = () => {
-    if (currentSlide.current > 0) {
-      currentSlide.current -= 1;
-      updateSlider();
-    }
-  };
-
-  const updateSlider = () => {
-    if (slider.current) {
-      slider.current.style.transform = `translateX(-${
-        currentSlide.current * 25
-      }%)`;
+    if (currentSlide > 0) {
+      updateSlider(currentSlide - 1);
     }
   };
 
@@ -82,7 +84,7 @@ const Testimonials = () => {
         type="button"
         className="testimonial-btn back-btn"
         onClick={slideBackward}
-        disabled={currentSlide.current === 0}
+        disabled={currentSlide === 0}
         aria-label="Previous testimonial"
       >
         <img src={back_icon} alt="" />
@@ -92,7 +94,7 @@ const Testimonials = () => {
         type="button"
         className="testimonial-btn next-btn"
         onClick={slideForward}
-        disabled={currentSlide.current === testimonials.length - 1}
+        disabled={currentSlide === testimonials.length - 1}
         aria-label="Next testimonial"
       >
         <img src={next_icon} alt="" />
@@ -124,20 +126,20 @@ const Testimonials = () => {
         </ul>
       </div>
 
-      <div className="testimonial-pagination" aria-label="Testimonial position">
+      <div
+        className="testimonial-pagination"
+        aria-label="Testimonial position"
+      >
         {testimonials.map((testimonial, index) => (
           <button
             key={testimonial.id}
             type="button"
             className={`testimonial-dot ${
-              currentSlide.current === index ? "active" : ""
+              currentSlide === index ? "active" : ""
             }`}
             aria-label={`Go to testimonial ${index + 1}`}
-            aria-current={currentSlide.current === index ? "step" : undefined}
-            onClick={() => {
-              currentSlide.current = index;
-              updateSlider();
-            }}
+            aria-current={currentSlide === index ? "step" : undefined}
+            onClick={() => updateSlider(index)}
           />
         ))}
       </div>
@@ -146,3 +148,4 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+

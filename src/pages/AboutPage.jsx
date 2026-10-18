@@ -71,7 +71,7 @@ function AboutPage() {
               Every great future begins with <span>learning.</span>
             </h2>
             <p>
-              Legacy Global Academy is a school community committed to the
+              Legacy Global Academy is a school committed to the
               journey of education, personal development, and lifelong learning.
             </p>
             <p>
