@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -26,19 +25,19 @@ const Home = ({ setPlayState }) => {
     <>
       <Hero />
 
-      <main>
+      <main className="overflow-hidden">
         <Academics />
 
-        <section id="about" className="container">
+        <section id="about" className="py-12">
           <About setPlayState={setPlayState} />
         </section>
 
-        <section id="gallery" className="container">
+        <section id="gallery" className="py-12">
           <Title subTitle="Our Gallery" title="Life at Legacy" />
           <Campus />
         </section>
 
-        <section className="container">
+        <section className="py-12">
           <Title
             subTitle="Our Community"
             title="What Our Community Says"
@@ -46,7 +45,7 @@ const Home = ({ setPlayState }) => {
           <Testimonials />
         </section>
 
-        <section id="contact" className="container">
+        <section id="contact" className="py-12">
           <Title subTitle="Contact Us" title="Get in Touch" />
           <Contact />
         </section>
@@ -55,47 +54,19 @@ const Home = ({ setPlayState }) => {
   );
 };
 
-// Temporary reusable page layout
+// Temporary reusable page layout (Enhanced minimal styling)
 const SimplePage = ({ subtitle, title, description }) => {
   return (
-    <main
-      style={{
-        minHeight: "65vh",
-        padding: "150px 10% 90px",
-        background: "#ffffff",
-      }}
-    >
-      <p
-        style={{
-          color: "#455195",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-        }}
-      >
+    <main className="mx-auto w-[min(1160px,calc(100%-48px))] max-sm:w-[calc(100%-32px)] pt-36 pb-20 min-h-[65vh] bg-white selection:bg-brand-sky/30">
+      <span className="inline-block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary">
         {subtitle}
-      </p>
+      </span>
 
-      <h1
-        style={{
-          marginTop: "12px",
-          color: "#242B47",
-          fontSize: "clamp(32px, 5vw, 52px)",
-          lineHeight: 1.2,
-        }}
-      >
+      <h1 className="mt-3 text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.1] tracking-[-0.045em] text-brand-dark">
         {title}
       </h1>
 
-      <p
-        style={{
-          maxWidth: "680px",
-          marginTop: "20px",
-          color: "#64708A",
-          fontSize: "17px",
-          lineHeight: 1.8,
-        }}
-      >
+      <p className="mt-4 max-w-[680px] text-[1.05rem] leading-[1.85] text-[#596278]">
         {description}
       </p>
     </main>
@@ -106,7 +77,7 @@ const App = () => {
   const [playState, setPlayState] = useState(false);
 
   return (
-    <>
+    <div className="min-h-screen bg-white font-[inherit] text-brand-dark antialiased">
       <Navbar />
 
       <Routes>
@@ -115,11 +86,10 @@ const App = () => {
           element={<Home setPlayState={setPlayState} />}
         />
 
-      <Route 
-            path="/about" 
-            element={<AboutPage />} 
-      />   
-
+        <Route 
+          path="/about" 
+          element={<AboutPage />} 
+        />   
 
         <Route
           path="/academics"
@@ -127,18 +97,18 @@ const App = () => {
         />
         
         <Route 
-           path="/news" 
-           element={<NewsPage />} 
+          path="/news" 
+          element={<NewsPage />} 
         />
 
         <Route 
-            path="/staff" 
-            element={<StaffPage />} 
+          path="/staff" 
+          element={<StaffPage />} 
         />   
         
         <Route 
-            path="/gallery" 
-            element={<GalleryPage />} 
+          path="/gallery" 
+          element={<GalleryPage />} 
         />
 
         <Route
@@ -148,13 +118,10 @@ const App = () => {
               <SimplePage
                 subtitle="Get in Touch"
                 title="Contact Legacy Global Academy"
-                description="Have a question about the school? Use the contact section below to get in touch."
+                description="Have a question about the school? Use the contact section below to get in touch with our team."
               />
 
-              <section
-                className="container"
-                style={{ paddingBottom: "80px" }}
-              >
+              <section className="pb-24">
                 <Contact />
               </section>
             </>
@@ -167,7 +134,7 @@ const App = () => {
             <SimplePage
               subtitle="Page Not Found"
               title="404 — Page Not Found"
-              description="The page you are looking for does not exist. Please use the navigation menu to find your way."
+              description="The page you are looking for does not exist. Please use the navigation menu to find your way back."
             />
           }
         />
@@ -179,7 +146,7 @@ const App = () => {
         playState={playState}
         setPlayState={setPlayState}
       />
-    </>
+    </div>
   );
 };
 

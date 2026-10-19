@@ -1,6 +1,5 @@
-
-import { useRef, useState } from "react";
-import "./Testimonials.css";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import next_icon from "../../assets/next-icon.png";
 import back_icon from "../../assets/back-icon.png";
@@ -48,98 +47,126 @@ const testimonials = [
   },
 ];
 
+const containerClass = "mx-auto w-[min(1000px,calc(100%-48px))] max-sm:w-[calc(100%-32px)]";
+
+const buttonClasses =
+  "absolute z-10 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-[#e2e7f0] bg-white shadow-sm transition-all duration-200 hover:border-brand-primary hover:bg-brand-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-[3px] focus-visible:outline-brand-sky focus-visible:outline-offset-4 max-sm:h-10 max-sm:w-10";
+
 const Testimonials = () => {
-  const slider = useRef(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const updateSlider = (index) => {
-    const lastSlide = testimonials.length - 1;
-    const nextIndex = Math.max(0, Math.min(index, lastSlide));
-
-    setCurrentSlide(nextIndex);
-
-    if (slider.current) {
-      slider.current.style.transform = `translateX(-${nextIndex * 25}%)`;
-    }
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const slideForward = () => {
-    if (currentSlide < testimonials.length - 1) {
-      updateSlider(currentSlide + 1);
+    if (currentIndex < testimonials.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
     }
   };
 
   const slideBackward = () => {
-    if (currentSlide > 0) {
-      updateSlider(currentSlide - 1);
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
     }
   };
 
+  const currentTestimonial = testimonials[currentIndex];
+
   return (
     <section
-      className="testimonials"
+      className={`${containerClass} relative py-24 max-lg:py-16 max-sm:py-12 text-brand-dark`}
       aria-label="Testimonials from our community"
     >
-      <button
-        type="button"
-        className="testimonial-btn back-btn"
-        onClick={slideBackward}
-        disabled={currentSlide === 0}
-        aria-label="Previous testimonial"
-      >
-        <img src={back_icon} alt="" />
-      </button>
-
-      <button
-        type="button"
-        className="testimonial-btn next-btn"
-        onClick={slideForward}
-        disabled={currentSlide === testimonials.length - 1}
-        aria-label="Next testimonial"
-      >
-        <img src={next_icon} alt="" />
-      </button>
-
-      <div className="slider">
-        <ul ref={slider}>
-          {testimonials.map((testimonial) => (
-            <li key={testimonial.id}>
-              <article className="slide">
-                <div className="user-info">
-                  <img
-                    className="testimonial-avatar"
-                    src={testimonial.image}
-                    alt={testimonial.alt}
-                    loading="lazy"
-                  />
-
-                  <div className="user-details">
-                    <h3>{testimonial.name}</h3>
-                    <span>{testimonial.location}</span>
-                  </div>
-                </div>
-
-                <p>{testimonial.message}</p>
-              </article>
-            </li>
-          ))}
-        </ul>
+      {/* Section Header */}
+      <div className="mx-auto mb-16 max-w-[700px] text-center max-sm:mb-10">
+        <span className="inline-block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary">
+          COMMUNITY VOICES
+        </span>
+        <h2 className="mt-3 text-[clamp(2.2rem,4.2vw,3.2rem)] font-extrabold leading-[1.12] tracking-[-0.04em] text-brand-dark">
+          What Our <span className="text-brand-primary">Community Says</span>
+        </h2>
       </div>
 
+      {/* Testimonial Stage */}
+      <div className="relative px-16 max-sm:px-0">
+        {/* Previous button */}
+        <button
+          type="button"
+          className={`${buttonClasses} left-0 max-sm:-left-2`}
+          onClick={slideBackward}
+          disabled={currentIndex === 0}
+          aria-label="Previous testimonial"
+        >
+          <img
+            src={back_icon}
+            alt=""
+            className="h-4 w-4 object-contain"
+          />
+        </button>
+
+        {/* Next button */}
+        <button
+          type="button"
+          className={`${buttonClasses} right-0 max-sm:-right-2`}
+          onClick={slideForward}
+          disabled={currentIndex === testimonials.length - 1}
+          aria-label="Next testimonial"
+        >
+          <img
+            src={next_icon}
+            alt=""
+            className="h-4 w-4 object-contain"
+          />
+        </button>
+
+        {/* Animated Slide Content */}
+        <div className="overflow-hidden min-h-[220px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={currentTestimonial.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="max-w-[760px] mx-auto text-center"
+            >
+              <div className="mb-6 flex flex-col items-center justify-center">
+                <img
+                  className="h-20 w-20 rounded-full border-2 border-brand-sky object-cover shadow-sm mb-4"
+                  src={currentTestimonial.image}
+                  alt={currentTestimonial.alt}
+                  loading="lazy"
+                />
+                <h3 className="text-[1.15rem] font-bold text-brand-primary tracking-tight">
+                  {currentTestimonial.name}
+                </h3>
+                <span className="text-[0.85rem] font-medium text-[#596278] mt-0.5">
+                  {currentTestimonial.location}
+                </span>
+              </div>
+
+              <p className="m-0 text-[clamp(1.05rem,1.8vw,1.25rem)] leading-[1.85] text-[#596278] italic font-normal">
+                &ldquo;{currentTestimonial.message}&rdquo;
+              </p>
+            </motion.article>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Pagination Dots */}
       <div
-        className="testimonial-pagination"
+        className="mt-12 flex items-center justify-center gap-3"
         aria-label="Testimonial position"
       >
         {testimonials.map((testimonial, index) => (
           <button
             key={testimonial.id}
             type="button"
-            className={`testimonial-dot ${
-              currentSlide === index ? "active" : ""
+            className={`h-2.5 rounded-full border-0 transition-all duration-300 focus-visible:outline-[3px] focus-visible:outline-brand-sky focus-visible:outline-offset-4 ${
+              currentIndex === index
+                ? "w-8 bg-brand-primary"
+                : "w-2.5 bg-[#cbd5e4] hover:bg-[#94a3b8]"
             }`}
             aria-label={`Go to testimonial ${index + 1}`}
-            aria-current={currentSlide === index ? "step" : undefined}
-            onClick={() => updateSlider(index)}
+            aria-current={currentIndex === index ? "step" : undefined}
+            onClick={() => setCurrentIndex(index)}
           />
         ))}
       </div>
@@ -148,4 +175,3 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
-

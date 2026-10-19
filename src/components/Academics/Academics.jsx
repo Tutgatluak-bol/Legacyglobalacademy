@@ -1,8 +1,6 @@
-import "./Academics.css";
-
+import { motion } from "framer-motion";
 import academicImage1 from "../../assets/program-1.jpg";
-// import academicImage2 from "../../assets/program-2.png";
-import academicImage4 from "../../assets/academicImage-4.png"
+import academicImage4 from "../../assets/academicImage-4.png";
 import academicImage3 from "../../assets/program-2.jpg";
 
 const academicAreas = [
@@ -29,42 +27,78 @@ const academicAreas = [
   },
 ];
 
+const containerClass = "mx-auto w-[min(1160px,calc(100%-48px))] max-sm:w-[calc(100%-32px)]";
+
+const sectionLabel =
+  "inline-block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary";
+
+const sectionHeading =
+  "mt-3 text-[clamp(2.2rem,4.2vw,3.2rem)] font-extrabold leading-[1.12] tracking-[-0.04em] text-brand-dark";
+
+const sectionParagraph =
+  "mt-4 text-[1rem] leading-[1.85] text-[#596278]";
+
 function Academics() {
   return (
-    <section className="academics-section" id="academics">
-      <div className="academics-heading">
-        <span className="academics-eyebrow">OUR ACADEMICS</span>
+    <section
+      className={`${containerClass} py-24 max-lg:py-16 max-sm:py-12`}
+      id="academics"
+    >
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="mx-auto mb-16 max-w-[700px] text-center max-sm:mb-10"
+      >
+        <span className={sectionLabel}>
+          OUR ACADEMICS
+        </span>
 
-        <h2>
-          Learning for <span>Every Future</span>
+        <h2 className={sectionHeading}>
+          Learning for <span className="text-brand-primary">Every Future</span>
         </h2>
 
-        <p>
+        <p className={`${sectionParagraph} mx-auto max-w-[620px]`}>
           We aim to create a learning environment where curiosity grows,
           knowledge develops, and every learner is encouraged to reach
           their potential.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="academics-grid">
-        {academicAreas.map((area) => (
-          <article className="academics-card" key={area.title}>
-            <div className="academics-card-image">
+      <div className="grid grid-cols-3 gap-10 max-lg:grid-cols-1 max-lg:gap-12">
+        {academicAreas.map((area, index) => (
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            className="group min-w-0"
+            key={area.title}
+          >
+            <div className="overflow-hidden rounded-[8px] bg-[#e7edf6] mb-6">
               <img
                 src={area.image}
                 alt={area.imageAlt}
                 loading="lazy"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              {/* <span className="academics-card-number">
-                {String(academicAreas.indexOf(area) + 1).padStart(2, "0")}
-              </span> */}
             </div>
 
-            <div className="academics-card-content">
-              <h3>{area.title}</h3>
-              <p>{area.description}</p>
+            <div className="border-t-2 border-brand-primary/40 pt-4">
+              <span className="text-[0.74rem] font-extrabold text-brand-primary tracking-wider uppercase">
+                Area {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <h3 className="mt-2 text-xl font-bold leading-[1.3] text-brand-dark">
+                {area.title}
+              </h3>
+
+              <p className="mt-3 text-[0.96rem] leading-[1.8] text-[#596278]">
+                {area.description}
+              </p>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>
