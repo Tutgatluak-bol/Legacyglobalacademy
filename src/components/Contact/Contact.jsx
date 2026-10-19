@@ -99,7 +99,7 @@ const Contact = () => {
                 />
               </span>
               <span className="font-medium text-[0.95rem] text-brand-dark">
-                +211 920 000 000
+                +211 927 498 447 
               </span>
             </li>
 

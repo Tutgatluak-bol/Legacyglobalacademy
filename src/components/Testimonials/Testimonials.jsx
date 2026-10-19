@@ -74,15 +74,6 @@ const Testimonials = () => {
       className={`${containerClass} relative py-24 max-lg:py-16 max-sm:py-12 text-brand-dark`}
       aria-label="Testimonials from our community"
     >
-      {/* Section Header */}
-      <div className="mx-auto mb-16 max-w-[700px] text-center max-sm:mb-10">
-        <span className="inline-block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary">
-          COMMUNITY VOICES
-        </span>
-        <h2 className="mt-3 text-[clamp(2.2rem,4.2vw,3.2rem)] font-extrabold leading-[1.12] tracking-[-0.04em] text-brand-dark">
-          What Our <span className="text-brand-primary">Community Says</span>
-        </h2>
-      </div>
 
       {/* Testimonial Stage */}
       <div className="relative px-16 max-sm:px-0">

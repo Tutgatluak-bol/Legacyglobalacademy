@@ -156,63 +156,58 @@ function StaffPage() {
         </div>
       </section>
 
-      {/* Introduction */}
-      <section className="py-24 max-lg:py-16 max-sm:py-12">
-        <div className={`${containerClass} grid grid-cols-[1fr_1.1fr] items-start gap-16 max-lg:grid-cols-1 max-lg:gap-10`}>
-          <motion.div
-            initial={{ opacity: 0, x: -15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className={sectionLabel}>
-              OUR PEOPLE, OUR STRENGTH
-            </span>
+     {/* Introduction */}
+    <section className="py-24 max-lg:py-16 max-sm:py-12">
+      <div className={`${containerClass} grid grid-cols-[1fr_1.1fr] items-start gap-16 max-lg:grid-cols-1 max-lg:gap-10`}>
+        <motion.div
+          initial={{ opacity: 0, x: -15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className={sectionLabel}>
+            OUR PEOPLE, OUR STRENGTH
+          </span>
 
-            <h2 className={sectionHeading}>
-              More Than a Team.
-              <br />
-              <span className="text-brand-primary">A Community.</span>
-            </h2>
-          </motion.div>
+          <h2 className={sectionHeading}>
+            More Than a Team.
+            <br />
+            <span className="text-brand-primary">A Community.</span>
+          </h2>
+        </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 15 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <p className={sectionParagraph}>
-              At Legacy Global Academy, the people who support learning
-              are central to the school experience. Our staff page
-              celebrates the leadership, educators, and support
-              professionals who contribute to our school community.
-            </p>
+        <motion.div 
+          initial={{ opacity: 0, x: 15 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <p className={sectionParagraph}>
+            At Legacy Global Academy, the people who support learning
+            are central to the school experience. Our staff page
+            celebrates the leadership, educators, and support
+            professionals who contribute to our school community.
+          </p>
 
-            <div className="mt-8 border-t border-[#e2e7f0]">
-              {[
-                { num: "01", title: "Commitment to Learning", desc: "Encouraging academic growth and lifelong learning." },
-                { num: "02", title: "Care and Respect", desc: "Promoting a welcoming and respectful community." },
-                { num: "03", title: "Shared Purpose", desc: "Working together to support every learner's journey." },
-              ].map((item, idx) => (
-                <div key={item.num} className="flex items-start gap-5 border-b border-[#e2e7f0] py-6">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-[#f0f4f9] text-[0.85rem] font-bold text-brand-primary">
-                    {item.num}
-                  </span>
-                  <div>
-                    <h3 className="text-[1.05rem] font-bold text-brand-dark">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-[0.92rem] leading-[1.7] text-[#596278]">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          <div className="mt-8 border-t border-[#e2e7f0]">
+            {[
+              { title: "Commitment to Learning", desc: "Encouraging academic growth and lifelong learning." },
+              { title: "Care and Respect", desc: "Promoting a welcoming and respectful community." },
+              { title: "Shared Purpose", desc: "Working together to support every learner's journey." },
+            ].map((item, idx) => (
+              <div key={idx} className="border-b border-[#e2e7f0] py-6">
+                <h3 className="text-[1.05rem] font-bold text-brand-dark">
+                  {item.title}
+                </h3>
+                <p className="mt-1 text-[0.92rem] leading-[1.7] text-[#596278]">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
 
       {/* Team */}
       <section
@@ -323,28 +318,29 @@ function StaffPage() {
               </motion.article>
             ))}
           </div>
-
-          <p className="mt-10 mb-0 border-l-2 border-brand-sky bg-white px-5 py-4 text-[0.88rem] leading-[1.75] text-[#596278] shadow-sm rounded-r-[6px]">
-            Staff profiles shown here are placeholders. Replace them with
-            the school&apos;s confirmed names, positions, biographies, and
-            photos before publishing.
-          </p>
         </div>
       </section>
 
-      {/* School values banner */}
-      <section className="relative overflow-hidden bg-brand-dark py-24 text-white max-sm:py-16">
-        <div className={`${containerClass} flex items-center gap-12 max-lg:flex-col max-lg:items-start`}>
-          <div className="grid h-24 w-24 shrink-0 place-items-center rounded-[8px] border border-brand-sky/40 bg-white/5 font-serif text-[4rem] font-bold text-brand-sky">
-            L
-          </div>
+    {/* School values banner */}
+      <section className="relative isolate overflow-hidden bg-brand-dark py-28 text-white max-sm:py-20">
+        {/* Background High-Resolution Unsplash Image with Gradient Overlay */}
+        <div className="absolute inset-0 -z-10">
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1600"
+            alt="Students collaborating together at school"
+            className="h-full w-full object-cover opacity-35"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/95 to-brand-dark/80" />
+        </div>
 
-          <div>
+        <div className={`${containerClass} flex items-center justify-between gap-12 max-lg:flex-col max-lg:items-start`}>
+          <div className="max-w-[760px]">
             <span className="inline-block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-sky mb-2">
               ONE SCHOOL. ONE COMMUNITY.
             </span>
 
-            <h2 className="my-3 max-w-[700px] text-[clamp(2.4rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-0.045em]">
+            <h2 className="my-3 text-[clamp(2.4rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-0.045em]">
               Together, We Help
               <br />
               <span className="text-brand-sky">
@@ -352,13 +348,13 @@ function StaffPage() {
               </span>
             </h2>
 
-            <p className="m-0 max-w-[620px] text-[1rem] leading-[1.8] text-white/75">
+            <p className="m-0 max-w-[620px] text-[1.05rem] leading-[1.8] text-white/80">
               Every learner deserves encouragement, opportunity, and
               an environment where their potential can flourish.
             </p>
           </div>
         </div>
-      </section>
+      </section> 
 
       {/* Contact CTA */}
       <section className="bg-white py-24 max-sm:py-16">

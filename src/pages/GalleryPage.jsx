@@ -353,7 +353,7 @@ function GalleryPage() {
             </p>
           </div>
 
-          <div className="flex shrink-0 flex-col items-stretch gap-3.5 max-lg:w-[min(100%,340px)] max-lg:flex-row max-lg:flex-wrap max-sm:w-full max-sm:flex-col">
+          <div className="flex text-black shrink-0 flex-col items-stretch gap-3.5 max-lg:w-[min(100%,340px)] max-lg:flex-row max-lg:flex-wrap max-sm:w-full max-sm:flex-col">
             <Link
               to="/admissions"
               className={`${lightButton} max-lg:flex-1 max-sm:w-full`}

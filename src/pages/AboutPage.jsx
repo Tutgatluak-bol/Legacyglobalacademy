@@ -231,49 +231,45 @@ function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-28 max-lg:py-20 max-sm:py-16">
-        <div className={containerClasses}>
-          <div className="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start max-lg:gap-4">
-            <div>
-              <span className={labelClasses}>What guides us</span>
-              <h2 className={`${headingClasses} mb-0 max-w-[580px]`}>
-                Values that shape{" "}
-                <span className="text-brand-primary">the journey.</span>
-              </h2>
-            </div>
-
-            <p className={`${paragraphClasses} m-0 max-w-[420px]`}>
-              The principles we promote help create a positive learning culture
-              and guide the way we grow together.
-            </p>
+    <section className="py-28 max-lg:py-20 max-sm:py-16">
+      <div className={containerClasses}>
+        <div className="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start max-lg:gap-4">
+          <div>
+            <span className={labelClasses}>What guides us</span>
+            <h2 className={`${headingClasses} mb-0 max-w-[580px]`}>
+              Values that shape{" "}
+              <span className="text-brand-primary">the journey.</span>
+            </h2>
           </div>
 
-          <div className="border-t border-[#e2e7f0]">
-            {coreValues.map((value, index) => (
-              <motion.article
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="grid grid-cols-[60px_minmax(160px,0.6fr)_minmax(0,1.4fr)] items-start gap-6 border-b border-[#e2e7f0] py-8 transition-colors hover:bg-[#fafbfc] px-4 max-sm:grid-cols-[36px_minmax(0,1fr)] max-sm:gap-x-4 max-sm:gap-y-2 max-sm:py-6"
-                key={value.title}
-              >
-                <span className="pt-1 text-[0.85rem] font-extrabold text-brand-primary tracking-wider">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <h3 className="m-0 text-[1.15rem] font-bold leading-[1.4] text-brand-dark">
-                  {value.title}
-                </h3>
-
-                <p className="m-0 max-w-[680px] text-[0.95rem] leading-[1.75] text-[#596278] max-sm:col-start-2">
-                  {value.description}
-                </p>
-              </motion.article>
-            ))}
-          </div>
+          <p className={`${paragraphClasses} m-0 max-w-[420px]`}>
+            The principles we promote help create a positive learning culture
+            and guide the way we grow together.
+          </p>
         </div>
-      </section>
+
+        <div className="border-t border-[#e2e7f0]">
+          {coreValues.map((value, index) => (
+            <motion.article
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="grid grid-cols-[minmax(200px,0.7fr)_minmax(0,1.3fr)] items-start gap-8 border-b border-[#e2e7f0] py-8 transition-colors hover:bg-[#fafbfc] px-4 max-sm:grid-cols-1 max-sm:gap-3 max-sm:py-6"
+              key={value.title}
+            >
+              <h3 className="m-0 text-[1.15rem] font-bold leading-[1.4] text-brand-dark">
+                {value.title}
+              </h3>
+
+              <p className="m-0 max-w-[680px] text-[0.95rem] leading-[1.75] text-[#596278]">
+                {value.description}
+              </p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* Our Approach Section */}
       <section className="grid grid-cols-2 bg-[#f8fafc] max-lg:grid-cols-1">
@@ -347,7 +343,7 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="flex shrink-0 flex-wrap gap-3.5 max-sm:w-full max-sm:flex-col">
+          <div className="flex text-black shrink-0 flex-wrap gap-3.5 max-sm:w-full max-sm:flex-col">
             <Link
               to="/admissions"
               className={`${buttonClasses} bg-white text-[#303b7c] hover:bg-brand-sky`}

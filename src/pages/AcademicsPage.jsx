@@ -222,11 +222,7 @@ function AcademicsPage() {
                 </div>
 
                 <div className="border-t-2 border-brand-primary/40 pt-4">
-                  <span className="text-[0.74rem] font-extrabold text-brand-primary tracking-wider uppercase">
-                    Area {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <h3 className="mt-2 text-xl font-bold leading-[1.3] text-brand-dark">
+                  <h3 className="text-xl font-bold leading-[1.3] text-brand-dark">
                     {area.title}
                   </h3>
 
@@ -269,22 +265,18 @@ function AcademicsPage() {
 
           <div className="border-t border-[#e2e7f0]">
             {[
-              { num: "01", title: "Curiosity", desc: "Ask questions, explore ideas, and keep learning." },
-              { num: "02", title: "Character", desc: "Develop responsibility, respect, and integrity." },
-              { num: "03", title: "Growth", desc: "Build confidence and prepare for future opportunities." },
+              { title: "Curiosity", desc: "Ask questions, explore ideas, and keep learning." },
+              { title: "Character", desc: "Develop responsibility, respect, and integrity." },
+              { title: "Growth", desc: "Build confidence and prepare for future opportunities." },
             ].map((item, idx) => (
               <motion.div 
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                key={item.num} 
-                className="flex gap-6 border-b border-[#e2e7f0] py-7 items-start transition-colors hover:bg-[#fafbfc] px-3"
+                key={item.title} 
+                className="border-b border-[#e2e7f0] py-7 transition-colors hover:bg-[#fafbfc] px-3"
               >
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-[#f0f4f9] text-[0.85rem] font-bold text-brand-primary">
-                  {item.num}
-                </span>
-
                 <div>
                   <h3 className="text-[1.1rem] font-bold text-brand-dark">
                     {item.title}
@@ -320,7 +312,7 @@ function AcademicsPage() {
 
           <Link
             to="/contact"
-            className={`${buttonBase} shrink-0 bg-white text-[#303b7c] hover:bg-brand-sky`}
+            className={`${buttonBase} shrink-0 bg-bg-brand-sky text-[#303b7c] hover:white/90 hover:bg-brand-sky/90 focus-visible:outline-white`}
           >
             Get in Touch <span aria-hidden="true">→</span>
           </Link>
