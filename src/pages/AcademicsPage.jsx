@@ -5,6 +5,8 @@ import learningImage from "../assets/program-1.jpg";
 import skillsImage from "../assets/program-2.jpg";
 import growthImage from "../assets/program-3.jpg";
 
+const academicHero = `${import.meta.env.BASE_URL}academic-hero.jpg`;
+
 const learningAreas = [
   {
     id: 1,
@@ -51,7 +53,19 @@ function AcademicsPage() {
     <main className="overflow-hidden bg-white text-brand-dark selection:bg-brand-sky/30">
       
       {/* Hero */}
-      <section className="relative flex min-h-[min(700px,82svh)] items-center overflow-hidden bg-[linear-gradient(100deg,rgb(36_43_71_/_92%)_0%,rgb(36_43_71_/_78%)_50%,rgb(69_81_149_/_50%)_100%),url('/Legacyglobalacademy/academic-hero.jpg')] bg-cover bg-center bg-no-repeat px-[max(24px,calc((100%-1160px)/2))] py-28 text-white max-sm:py-20">
+      <section
+      className="relative flex min-h-[min(700px,82svh)] items-center overflow-hidden
+      bg-cover bg-center bg-no-repeat px-[max(24px,calc((100%-1160px)/2))]
+      py-28 text-white max-sm:py-20"
+      style={{
+        backgroundImage: `linear-gradient(
+          100deg,
+          rgb(36 43 71 / 92%) 0%,
+          rgb(36 43 71 / 78%) 50%,
+          rgb(69 81 149 / 50%) 100%
+        ), url("${academicHero}")`,
+      }}
+    >
         <div className="relative z-10 w-full max-w-[1160px]">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
