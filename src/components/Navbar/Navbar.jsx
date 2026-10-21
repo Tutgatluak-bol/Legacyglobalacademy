@@ -7,6 +7,7 @@ import menuIcon from "../../assets/menu-icon.png";
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [academicsOpen, setAcademicsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +24,7 @@ const Navbar = () => {
     const closeOnResize = () => {
       if (window.innerWidth > 886) {
         setMobileMenu(false);
+        setAcademicsOpen(false);
       }
     };
 
@@ -31,7 +33,10 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", closeOnResize);
   }, []);
 
-  const closeMenu = () => setMobileMenu(false);
+  const closeMenu = () => {
+    setMobileMenu(false);
+    setAcademicsOpen(false);
+  };
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -96,21 +101,86 @@ const Navbar = () => {
         {navItems.map((item) => (
           <li
             key={item.path}
-            className="text-sm font-medium max-[1100px]:text-[13px] max-[886px]:block max-[886px]:m-0 max-[886px]:border-b max-[886px]:border-white/15 max-[886px]:py-[15px] max-[886px]:text-[15px]"
+            className={`text-sm font-medium max-[1100px]:text-[13px] max-[886px]:block max-[886px]:m-0 max-[886px]:border-b max-[886px]:border-white/15 max-[886px]:py-[15px] max-[886px]:text-[15px] ${
+              item.path === "/academics" ? "group relative" : ""
+            }`}
           >
-            <NavLink
-              to={item.path}
-              end={item.path === "/"}
-              onClick={closeMenu}
-              className={(state) =>
-                navLinkClasses(state, item.path === "/contact") +
-                (mobileMenu
-                  ? " max-[886px]:block max-[886px]:w-full max-[886px]:py-[5px]"
-                  : " max-[886px]:block max-[886px]:w-full max-[886px]:py-[5px]")
-              }
-            >
-              {item.label}
-            </NavLink>
+            <div className="flex items-center gap-2">
+              <NavLink
+                to={item.path}
+                end={item.path === "/"}
+                onClick={closeMenu}
+                className={(state) =>
+                  navLinkClasses(state, item.path === "/contact") +
+                  " max-[886px]:block max-[886px]:w-full max-[886px]:py-[5px]"
+                }
+              >
+                {item.label}
+              </NavLink>
+
+              {item.path === "/academics" && (
+                <button
+                  type="button"
+                  onClick={() => setAcademicsOpen((open) => !open)}
+                  className="inline-flex cursor-pointer items-center justify-center border-0 bg-transparent p-1 text-white transition-transform duration-200 hover:text-brand-sky focus-visible:outline-2 focus-visible:outline-brand-sky max-[886px]:ml-auto"
+                  aria-label="Toggle Academics submenu"
+                  aria-expanded={academicsOpen}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-200 ${
+                      academicsOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {item.path === "/academics" && (
+              <div
+                className={`${
+                  academicsOpen ? "block" : "hidden"
+                } absolute left-0 top-full z-[110] min-w-[180px] rounded-md bg-brand-primary py-2 shadow-lg group-hover:block group-focus-within:block max-[886px]:static max-[886px]:mt-2 max-[886px]:w-full max-[886px]:min-w-0 max-[886px]:rounded-none max-[886px]:bg-white/5 max-[886px]:py-1 max-[886px]:shadow-none ${
+                  academicsOpen
+                    ? "max-[886px]:block"
+                    : "max-[886px]:hidden"
+                }`}
+              >
+                <NavLink
+                  to="/academics/sciences"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `block px-4 py-2.5 text-sm transition-colors duration-200 hover:bg-white/10 hover:text-brand-sky max-[886px]:px-4 max-[886px]:py-3 ${
+                      isActive ? "text-brand-sky" : "text-white"
+                    }`
+                  }
+                >
+                  Sciences
+                </NavLink>
+
+                <NavLink
+                  to="/academics/arts"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `block px-4 py-2.5 text-sm transition-colors duration-200 hover:bg-white/10 hover:text-brand-sky max-[886px]:px-4 max-[886px]:py-3 ${
+                      isActive ? "text-brand-sky" : "text-white"
+                    }`
+                  }
+                >
+                  Arts
+                </NavLink>
+              </div>
+            )}
           </li>
         ))}
       </ul>

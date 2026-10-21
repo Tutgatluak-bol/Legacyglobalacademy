@@ -1,5 +1,9 @@
+
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+
+import SciencesPage from "./pages/SciencesPage";
+import ArtsPage from "./pages/ArtsPage";
 
 import AcademicsPage from "./pages/AcademicsPage";
 import NewsPage from "./pages/NewsPage";
@@ -54,7 +58,7 @@ const Home = ({ setPlayState }) => {
   );
 };
 
-// Temporary reusable page layout (Enhanced minimal styling)
+// Reusable page layout
 const SimplePage = ({ subtitle, title, description }) => {
   return (
     <main className="mx-auto w-[min(1160px,calc(100%-48px))] max-sm:w-[calc(100%-32px)] pt-36 pb-20 min-h-[65vh] bg-white selection:bg-brand-sky/30">
@@ -86,29 +90,62 @@ const App = () => {
           element={<Home setPlayState={setPlayState} />}
         />
 
-        <Route 
-          path="/about" 
-          element={<AboutPage />} 
-        />   
+        <Route
+          path="/about"
+          element={<AboutPage />}
+        />
 
         <Route
           path="/academics"
           element={<AcademicsPage />}
         />
-        
-        <Route 
-          path="/news" 
-          element={<NewsPage />} 
+
+        <Route
+          path="/academics/sciences"
+          element={<SciencesPage />}
         />
 
-        <Route 
-          path="/staff" 
-          element={<StaffPage />} 
-        />   
-        
-        <Route 
-          path="/gallery" 
-          element={<GalleryPage />} 
+        <Route
+          path="/academics/arts"
+          element={<ArtsPage />}
+        />
+
+        {/* New Academics dropdown pages */}
+        <Route
+          path="/academics/sciences"
+          element={
+            <SimplePage
+              subtitle="ACADEMICS"
+              title="Sciences"
+              description="Explore the Sciences section at Legacy Global Academy. More information about the subjects and learning opportunities offered will be added here."
+            />
+          }
+        />
+
+        <Route
+          path="/academics/arts"
+          element={
+            <SimplePage
+              subtitle="ACADEMICS"
+              title="Arts"
+              description="Explore the Arts section at Legacy Global Academy. More information about the subjects and learning opportunities offered will be added here."
+            />
+          }
+        />
+
+        <Route
+          path="/news"
+          element={<NewsPage />}
+        />
+
+        <Route
+          path="/staff"
+          element={<StaffPage />}
+        />
+
+        <Route
+          path="/gallery"
+          element={<GalleryPage />}
         />
 
         <Route

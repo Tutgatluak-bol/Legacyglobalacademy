@@ -1,37 +1,23 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import learningImage from "../assets/program-1.jpg";
-import skillsImage from "../assets/program-2.jpg";
-import growthImage from "../assets/program-3.jpg";
 
 const academicHero = `${import.meta.env.BASE_URL}academic-hero.jpg`;
 
-const learningAreas = [
-  {
-    id: 1,
-    title: "Learning & Discovery",
-    description:
-      "Encouraging curiosity, active participation, and a strong foundation for lifelong learning.",
-    image: learningImage,
-    alt: "Learning and discovery",
-  },
-  {
-    id: 2,
-    title: "Knowledge & Skills",
-    description:
-      "Supporting learners as they develop knowledge, practical skills, and independent thinking.",
-    image: skillsImage,
-    alt: "Developing knowledge and skills",
-  },
-  {
-    id: 3,
-    title: "Personal Growth",
-    description:
-      "Encouraging confidence, responsibility, creativity, and preparation for future opportunities.",
-    image: growthImage,
-    alt: "Personal growth and achievement",
-  },
+const foundationSubjects = [
+  "English",
+  "Mathematics",
+  "Biology",
+  "Chemistry",
+  "Physics",
+  "History",
+  "Geography",
+  "ICT",
+  "Agriculture",
+  "Commerce",
+  "ACCOUNTING",
+  "CRE",
+  "LITERATURE"
 ];
 
 const container = "mx-auto w-[min(1160px,calc(100%-48px))] max-sm:w-[calc(100%-32px)]";
@@ -77,16 +63,16 @@ function AcademicsPage() {
             </span>
 
             <h1 className="mt-3 max-w-[820px] text-[clamp(2.8rem,6.8vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.055em]">
-              Learning Today.
+              Strong Foundations.
               <span className="block text-brand-sky">
-                Leading Tomorrow.
+                Brighter Futures.
               </span>
             </h1>
 
             <p className="mt-6 max-w-[620px] text-[1.05rem] leading-[1.8] text-white/85 max-sm:text-[0.98rem]">
-              Discover our approach to learning, where knowledge,
-              curiosity, and personal development help learners prepare
-              for the future.
+              Our Senior 1–2 Foundation curriculum gives students a broad
+              academic base before they choose a specialized pathway in
+              Senior 3–4.
             </p>
 
             <div className="mt-8 flex text-black flex-wrap gap-4 max-sm:flex-col max-sm:items-stretch">
@@ -94,7 +80,7 @@ function AcademicsPage() {
                 href="#learning-areas"
                 className={`${buttonBase} border-transparent bg-white text-[#303b7c] hover:bg-brand-sky hover:text-brand-dark shadow-sm`}
               >
-                Explore Learning
+                Explore Subjects
                 <span aria-hidden="true">↓</span>
               </a>
 
@@ -152,7 +138,7 @@ function AcademicsPage() {
           className="min-w-0"
         >
           <span className={sectionLabel}>
-            OUR LEARNING APPROACH
+            SENIOR 1–2 FOUNDATION
           </span>
 
           <h2 className={sectionHeading}>
@@ -164,15 +150,15 @@ function AcademicsPage() {
 
           <div className="space-y-4 pt-2">
             <p className={sectionParagraph}>
-              Education is about more than memorising information. It is
-              also about developing understanding, asking questions,
-              solving problems, and learning how to work with others.
+              Senior 1 and Senior 2 introduce students to a broad range of
+              subjects, helping them develop essential knowledge, study
+              habits, and the confidence to explore different areas of learning.
             </p>
 
             <p className={sectionParagraph}>
-              At Legacy Global Academy, our educational approach aims to
-              support learners as they build knowledge, develop
-              character, and discover their potential.
+              This foundation prepares students to make a more informed
+              choice between the Science Stream and Arts Stream as they
+              progress into Senior 3 and Senior 4.
             </p>
           </div>
 
@@ -181,72 +167,69 @@ function AcademicsPage() {
               to="/about"
               className="inline-flex items-center gap-2 text-[0.95rem] font-bold text-brand-primary no-underline transition-colors hover:text-[#303b7c] focus-visible:outline-[3px] focus-visible:outline-brand-sky focus-visible:outline-offset-4"
             >
-              Learn about our school
+              Explore our school
               <span aria-hidden="true">→</span>
             </Link>
           </div>
         </motion.div>
       </section>
 
-      {/* Learning Areas (Card-Free Flow) */}
+      {/* Foundation Subjects */}
       <section
         id="learning-areas"
-        className="bg-[#f8fafc] py-28 max-lg:py-20 max-sm:py-16"
+        className="scroll-mt-24 bg-[#f8fafc] py-28 max-lg:py-20 max-sm:py-16"
       >
         <div className={container}>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="mx-auto mb-16 max-w-[700px] text-center max-sm:mb-10"
           >
-            <span className={sectionLabel}>
-              LEARNING AT LEGACY
-            </span>
+            <span className={sectionLabel}>SENIOR 1–2 CURRICULUM</span>
 
             <h2 className={sectionHeading}>
-              A foundation for{" "}
-              <span className="text-brand-primary">the future</span>
+              The Foundation
+              <span className="text-brand-primary"> curriculum.</span>
             </h2>
 
             <p className={`${sectionParagraph} mx-auto max-w-[600px]`}>
-              We value a learning environment that encourages discovery,
-              skill development, and growth.
+              A general curriculum designed to give students a strong
+              academic base before they choose a specialized pathway.
             </p>
+
+            <div className="mt-6 flex justify-center">
+              <span className="inline-flex items-center rounded-full border border-brand-primary/15 bg-white px-4 py-2 text-sm font-bold text-brand-primary">
+                01 · Senior 1–2
+              </span>
+            </div>
           </motion.div>
 
-          <div className="grid grid-cols-3 gap-10 max-lg:grid-cols-1 max-lg:gap-12">
-            {learningAreas.map((area, index) => (
-              <motion.article
-                initial={{ opacity: 0, y: 20 }}
+          <div className="grid grid-cols-2 gap-x-14 gap-y-0 border-t border-[#e2e7f0] md:grid-cols-3 max-sm:grid-cols-1">
+            {foundationSubjects.map((subject, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="group min-w-0"
-                key={area.id}
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                className="flex items-center gap-4 border-b border-[#e2e7f0] py-6"
+                key={subject}
               >
-                <div className="overflow-hidden rounded-[8px] bg-[#e7edf6] mb-6">
-                  <img
-                    src={area.image}
-                    alt={area.alt}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                </div>
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-brand-primary shadow-sm">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-                <div className="border-t-2 border-brand-primary/40 pt-4">
-                  <h3 className="text-xl font-bold leading-[1.3] text-brand-dark">
-                    {area.title}
-                  </h3>
-
-                  <p className="mt-3 text-[0.96rem] leading-[1.8] text-[#596278]">
-                    {area.description}
-                  </p>
-                </div>
-              </motion.article>
+                <h3 className="text-base font-bold text-brand-dark sm:text-lg">
+                  {subject}
+                </h3>
+              </motion.div>
             ))}
           </div>
+
+          <p className="mt-6 text-center text-sm leading-6 text-[#69738b]">
+            The list currently displays the 13 subjects provided.
+          </p>
         </div>
       </section>
 
@@ -315,21 +298,30 @@ function AcademicsPage() {
             </span>
 
             <h2 className="my-3 text-[clamp(2.4rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-0.045em]">
-              Every learning journey begins with a step.
+              Choose your next learning pathway.
             </h2>
 
             <p className="m-0 max-w-[560px] text-[1rem] leading-[1.8] text-white/75">
-              Get in touch with our school to learn more about Legacy
-              Global Academy.
+              After the Foundation stage, students can explore the Science
+              Stream or Arts Stream for Senior 3–4.
             </p>
           </div>
 
-          <Link
-            to="/contact"
-            className={`${buttonBase} shrink-0 bg-bg-brand-sky text-[#303b7c] hover:white/90 hover:bg-brand-sky/90 focus-visible:outline-white`}
-          >
-            Get in Touch <span aria-hidden="true">→</span>
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              to="/academics/sciences"
+              className={`${buttonBase} shrink-0 border border-brand-sky bg-brand-sky text-[#303b7c] hover:bg-white`}
+            >
+              Science Stream <span aria-hidden="true">→</span>
+            </Link>
+
+            <Link
+              to="/academics/arts"
+              className={`${buttonBase} shrink-0 border border-white/40 bg-transparent text-white hover:border-brand-sky hover:bg-brand-sky hover:text-brand-dark`}
+            >
+              Arts Stream <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
     </main>

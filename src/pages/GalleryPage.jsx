@@ -88,7 +88,7 @@ const outlineButton =
   `${buttonBase} border-white/40 bg-transparent text-white hover:border-brand-sky hover:bg-brand-sky hover:text-brand-dark`;
 
 const sectionLabel =
-  "mb-3 block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary";
+  "mb-3 block text-[0.64rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary";
 
 function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All Photos");

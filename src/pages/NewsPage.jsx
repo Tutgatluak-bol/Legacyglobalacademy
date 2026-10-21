@@ -347,7 +347,7 @@ function NewsPage() {
 
           <Link
             to="/contact"
-            className={`${buttonBase} shrink-0 bg-white text-[#303b7c] hover:bg-brand-sky`}
+            className={`${buttonBase} shrink-0 bg-brand-sky text-[#303b7c] hover:bg-gray-300`}
           >
             Get in Touch <span aria-hidden="true">→</span>
           </Link>
