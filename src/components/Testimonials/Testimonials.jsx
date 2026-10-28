@@ -3,26 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import next_icon from "../../assets/next-icon.png";
 import back_icon from "../../assets/back-icon.png";
-import user_1 from "../../assets/user-1.png";
-import user_2 from "../../assets/user-2.png";
-import user_3 from "../../assets/user-3.png";
-import user_4 from "../../assets/user-4.png";
+
+const testimonialImage = (filename) =>
+  `${import.meta.env.BASE_URL}testimonials/${filename}`;
 
 const testimonials = [
   {
     id: 1,
-    name: "TUT GATLUAK",
-    location: "South Sudan",
-    image: user_1,
-    alt: "Tut Gatluak",
+    name: "Genesis Mabior",
+    location: "CEO, SSECO · Anniversary Guest",
+    image: testimonialImage("testimonial-1.jpg"),
+    alt: "Genesis Mabior",
     message:
-      "A supportive learning environment helps students build confidence, develop essential skills, and work towards their academic goals. Quality education creates opportunities for young people to grow and prepare for a brighter future.",
+      "Legacy is one of the few schools whose growth and performance I truly respect.",
   },
   {
     id: 2,
     name: "ATHIAN BAYAK",
     location: "South Sudan",
-    image: user_2,
+    image: testimonialImage("testimonial-2.jpg"),
     alt: "Athian Bayak",
     message:
       "Education is most meaningful when students are encouraged to think creatively, ask questions, and discover their potential. A positive school community can inspire learners to become responsible and confident individuals.",
@@ -31,7 +30,7 @@ const testimonials = [
     id: 3,
     name: "AMOS KONG",
     location: "South Sudan",
-    image: user_3,
+    image: testimonialImage("testimonial-3.jpg"),
     alt: "Amos Kong",
     message:
       "Every child deserves an opportunity to learn, explore new ideas, and develop strong values. A commitment to learning, discipline, and personal growth can help students build a strong foundation for their future.",
@@ -40,7 +39,7 @@ const testimonials = [
     id: 4,
     name: "LOL AYUAL",
     location: "South Sudan",
-    image: user_4,
+    image: testimonialImage("testimonial-4.jpg"),
     alt: "Lol Ayual",
     message:
       "Strong partnerships between schools, families, and communities help create better learning opportunities. By encouraging curiosity, respect, and continuous improvement, we can help prepare the next generation for greater possibilities.",

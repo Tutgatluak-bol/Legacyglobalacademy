@@ -10,6 +10,7 @@ import NewsPage from "./pages/NewsPage";
 import StaffPage from "./pages/StaffPage";
 import GalleryPage from "./pages/GalleryPage";
 import AboutPage from "./pages/AboutPage";
+import AlumnusPage from "./pages/AlumnusPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -20,6 +21,7 @@ import Academics from "./components/Academics/Academics";
 import Campus from "./components/Campus/Campus";
 import Contact from "./components/Contact/Contact";
 import Testimonials from "./components/Testimonials/Testimonials";
+import Alumnus from "./components/Alumnus/Alumnus";
 import Title from "./components/Title/Title";
 import VideoPlayer from "./components/VIdeoPlayer/VideoPlayer";
 
@@ -41,7 +43,12 @@ const Home = ({ setPlayState }) => {
           <Campus />
         </section>
 
+        {/* Alumni section on the homepage */}
         <section className="py-12">
+          <Alumnus />
+        </section>
+
+        <section className="py-10">
           <Title
             subTitle="Our Community"
             title="What Our Community Says"
@@ -61,7 +68,7 @@ const Home = ({ setPlayState }) => {
 // Reusable page layout
 const SimplePage = ({ subtitle, title, description }) => {
   return (
-    <main className="mx-auto w-[min(1160px,calc(100%-48px))] max-sm:w-[calc(100%-32px)] pt-36 pb-20 min-h-[65vh] bg-white selection:bg-brand-sky/30">
+    <main className="mx-auto min-h-[65vh] w-[min(1160px,calc(100%-48px))] bg-white pt-36 pb-20 selection:bg-brand-sky/30 max-sm:w-[calc(100%-32px)]">
       <span className="inline-block text-[0.74rem] font-extrabold uppercase tracking-[0.2em] text-brand-primary">
         {subtitle}
       </span>
@@ -106,31 +113,13 @@ const App = () => {
         />
 
         <Route
+          path="/alumnus"
+          element={<AlumnusPage />}
+        />
+
+        <Route
           path="/academics/arts"
           element={<ArtsPage />}
-        />
-
-        {/* New Academics dropdown pages */}
-        <Route
-          path="/academics/sciences"
-          element={
-            <SimplePage
-              subtitle="ACADEMICS"
-              title="Sciences"
-              description="Explore the Sciences section at Legacy Global Academy. More information about the subjects and learning opportunities offered will be added here."
-            />
-          }
-        />
-
-        <Route
-          path="/academics/arts"
-          element={
-            <SimplePage
-              subtitle="ACADEMICS"
-              title="Arts"
-              description="Explore the Arts section at Legacy Global Academy. More information about the subjects and learning opportunities offered will be added here."
-            />
-          }
         />
 
         <Route

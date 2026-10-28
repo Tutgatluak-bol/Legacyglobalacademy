@@ -42,6 +42,7 @@ const Navbar = () => {
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
     { label: "Academics", path: "/academics" },
+    { label: "alumnus", path: "/alumnus"},
     { label: "News & Events", path: "/news" },
     { label: "Staff", path: "/staff" },
     { label: "Gallery", path: "/gallery" },
